@@ -99,10 +99,6 @@ public class CommonFunctions {
         return Integer.parseInt(String.valueOf(val));
     }
 
-
-
-
-
 }// klamra klasy
 
 
