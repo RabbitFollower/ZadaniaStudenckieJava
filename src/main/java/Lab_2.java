@@ -33,7 +33,7 @@ public class Lab_2 {
         return 0;
     }
 
-    public void displayOddNumbers2() {
+    public void displayOddNumbers2() throws Exception {
         int positiveNumber = CommonFunctions.getNumberFromUser("Podaj liczbę  całkowitą dodatnią: "); // 33
         int testNumber = 0;
 
@@ -309,6 +309,23 @@ public class Lab_2 {
         return numbersArr;
     }
 
+//Zad_6 Gra w "więcej - mniej":
+
+    public void lessMoreGame() throws Exception {
+        int randomNumber = CommonFunctions.getRandomNumber(0, 100);
+        int yourNumber;
+        System.out.println(randomNumber);
+
+        while (randomNumber != (yourNumber = CommonFunctions.getNumberFromUser("Podaj liczbę od 0 - 100", 0, 100))) {
+            if (yourNumber > randomNumber) {
+                System.out.println("Podałeś za dużą wartość");
+            } else {
+                System.out.println("Podałeś za małą wartość");
+            }
+        }
+        System.out.println("Gratulacje, wygrałeś! Szukana liczba to: " + randomNumber);
+    }
+
 
 // Zad_7 Narysuj Prostokąt w konsoli:
 
@@ -327,7 +344,7 @@ public class Lab_2 {
         }
     }
 
-    public void drawRectangle() {
+    public void drawRectangle() throws Exception {
         // 1. Filling char
         String userInput;
         while ("".equals(userInput = CommonFunctions.getStringFromUser("Podaj znak do wypelnienia: "))) {
@@ -362,26 +379,9 @@ public class Lab_2 {
     }
 
 
-//Zad_6 Gra w "więcej - mniej":
-
-    public void lessMoreGame() {
-        int randomNumber = CommonFunctions.getRandomNumber(0, 100);
-        int yourNumber;
-        System.out.println(randomNumber);
-
-        while (randomNumber != (yourNumber = CommonFunctions.getNumberFromUser("Podaj liczbę od 0 - 100", 0, 100))) {
-            if (yourNumber > randomNumber) {
-                System.out.println("Podałeś za dużą wartość");
-            } else {
-                System.out.println("Podałeś za małą wartość");
-            }
-        }
-        System.out.println("Gratulacje, wygrałeś! Szukana liczba to: " + randomNumber);
-    }
-
 //Zad_8 Choinka
 
-    public void drawChristmasTree() {
+    public void drawChristmasTree() throws Exception {
         int height = CommonFunctions.getNumberFromUser("Podaj liczbę pięter choinki :)");
         int middle = height - 1;
         int rowsLength = height * 2 - 1;
@@ -397,7 +397,7 @@ public class Lab_2 {
 
 // Zad_9 ?????! Wrócić i ogarnąc dla liczb ujemnych !????
 
-    public void countSumAndRatio() {
+    public void countSumAndRatio() throws Exception {
         String usersNumber = String.valueOf(CommonFunctions.getNumberFromUser("Podaj długą liczbę całkowitą:"));
         int sumOfNumbers = 0;
         int[] evenArr = new int[usersNumber.length()];
@@ -433,7 +433,7 @@ public class Lab_2 {
 
 //Zad_10
 
-    public void getNumbersDivisors() {
+    public void getNumbersDivisors() throws Exception {
         int usersNumber = CommonFunctions.getNumberFromUser("Podaj liczbę aby wyświetlić jej dzielniki: ");
         System.out.println("Dzielniki dla liczby " + usersNumber + " to: ");
         if (usersNumber < 0) {
@@ -452,7 +452,7 @@ public class Lab_2 {
 
 //Zad_11 Sprawdzanie czy liczba jest pierwszą
 
-    public void isPrimeNumberFor() {
+    public void isPrimeNumberFor() throws Exception {
         int number = CommonFunctions.getNumberFromUser("Podaj liczbę aby sprawdzić czy jest pierwszą: ",2,null);
         boolean flag = false;
         for (int i = 2; i <= number / 2; i++) {

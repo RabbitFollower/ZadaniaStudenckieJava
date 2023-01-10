@@ -2,9 +2,7 @@ import java.util.Scanner;
 
 public class Simple {
 
-
-    public static void main (String[] args) {
-
+    public static void main (String[] args) throws Exception {
 
         ArrayMenager arrayMenager = new ArrayMenager();
 
@@ -12,7 +10,6 @@ public class Simple {
         Lab_2 lab_2 = new Lab_2();
 
         Lab_3 lab_3 = new Lab_3();
-        lab_3.createArr10();
 
     }
 

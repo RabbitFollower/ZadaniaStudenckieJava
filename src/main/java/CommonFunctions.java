@@ -10,22 +10,51 @@ public class CommonFunctions {
         return scanner.nextLine();
     }
 
-    public static int getNumberFromUser(String msg) {
+    public static int getNumberFromUser(String msg) throws Exception {
         return getNumberFromUser(msg, null, null);
     }
 
-    public static int getNumberFromUser(String msg, Integer min, Integer max) {
+    public static int getNumberFromUserWithMin(String msg, Integer min) throws Exception {
+        System.out.println();
+        return getNumberFromUser(msg, min, null);
+    }
+//
+    public static int getNumberFromUserWithMax(String msg, Integer max) throws Exception {
+        return getNumberFromUser(msg, null, max);
+    }
+
+//    public static boolean isTestNumberCorrect() {
+//        int testNumberMax = getNumberFromUserWithMax("Podaj liczbę miejszą od 10: ", 9);
+//        if () {
+//            System.out.println("");
+//            return false;
+//        }
+//
+//        return true;
+//    }
+
+    public static int getNumberFromUser(String msg, Integer min, Integer max) throws Exception {
         System.out.println(msg);
         String numberFromUser;
+
+//        if (min == null) {
+//            min = Integer.MIN_VALUE;
+//        }
+
+        if (min != null && max != null && min > max) {
+            System.out.println("");
+            throw new Exception("min > max");
+        }
 
         while ((numberFromUser = scanner.next()) == null
             || !isNumberFromUserInteger(numberFromUser)
             || (min != null && max != null && !isNumberFromUserBetweenMinMax(Integer.parseInt(numberFromUser), min, max))
-            || Integer.parseInt(numberFromUser) < min && max == null
-             ) {
+            || (min == null && max != null && Integer.parseInt(numberFromUser) > max)
+            || (min != null && max == null && Integer.parseInt(numberFromUser) < min) ) {
 
             System.out.println("Podałeś złe dane, wpisz poprawne.");
         }
+        System.out.println("poprawne dane");
         return Integer.parseInt(numberFromUser);
     }
 
