@@ -23,16 +23,6 @@ public class CommonFunctions {
         return getNumberFromUser(msg, null, max);
     }
 
-//    public static boolean isTestNumberCorrect() {
-//        int testNumberMax = getNumberFromUserWithMax("Podaj liczbę miejszą od 10: ", 9);
-//        if () {
-//            System.out.println("");
-//            return false;
-//        }
-//
-//        return true;
-//    }
-
     public static int getNumberFromUser(String msg, Integer min, Integer max) throws Exception {
         System.out.println(msg);
         String numberFromUser;
@@ -99,6 +89,28 @@ public class CommonFunctions {
         return Integer.parseInt(String.valueOf(val));
     }
 
+    public static String getNumbersPaddingLeft(int numberToEdit, int numberMaxLength) {
+        int spacesNo = 0;
+        StringBuilder editedNumber = new StringBuilder();
+
+        if (String.valueOf(numberToEdit).length() < numberMaxLength) {
+            spacesNo = numberMaxLength - String.valueOf(numberToEdit).length();
+        }
+
+        for (int i = 0; i < spacesNo; i++) {
+            editedNumber.append(" ");
+        }
+
+        editedNumber.append(numberToEdit);
+        return editedNumber.toString();
+    }
+
+
+
+
+
+
+
 }// klamra klasy
 
 
@@ -108,59 +120,7 @@ public class CommonFunctions {
 
 
 
-//    public static int getNumberFromUser2(String msg, Integer min, Integer max) {
-//        System.out.println(msg);
-//        String numberFromUser;
-//
-//        while ((numberFromUser = scanner.next()) == null || !isParamNumer(numberFromUser)
-//                || !isParamBetweenMinMax(Integer.parseInt(numberFromUser), min, max)) {
-//            System.out.println("Złe dane wejściowe, próbuj dalej");
-//        }
-//
-//        return Integer.parseInt(numberFromUser);
-//    }
-//
-//    public static int getNumberFromUser3(String msg, Integer min, Integer max) {
-//        System.out.println(msg);
-//        String numberFromUser = scanner.next();
-//
-//        if (numberFromUser == null || !isParamNumer(numberFromUser) || !isParamBetweenMinMax(Integer.parseInt(numberFromUser), min, max)) {
-//            System.out.println("Złe dane wejściowe!!!!!");
-//            return getNumberFromUser3(msg, min, max);
-//        }
-//
-//        return Integer.parseInt(numberFromUser);
-//    }
-//
-//
-//
-//    private static boolean isParamNumer(String testValue) {
-//        try {
-//            Integer.parseInt(testValue);
-//        } catch(NumberFormatException | NullPointerException e) {
-//            return false;
-//        }
-//        return true;
-//    }
-//
-//    private static boolean isParamBetweenMinMax(Integer testValue, int min, int max) {
-//        if (testValue < min || testValue > max) {
-//            return false;
-//        }
-//        return true;
-//    }
-//
-//    private boolean isParamBetweenMinMax2(Integer testValue, int min, int max) {
-//        return (testValue > min && testValue < max);
-//    }
 
-//        System.out.println(msg);
-//                String numberFromUser = scanner.next();
-//
-//
-//
-//
-//                return Integer.parseInt(numberFromUser);
 
 
 
