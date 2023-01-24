@@ -1,6 +1,7 @@
+
 public class Lab_4 {
 
-//Zad_1
+    //Zad_1
     public static void countLastCharFromString() {
 
         String stringFromUser =
@@ -39,7 +40,7 @@ public class Lab_4 {
     }
 
 
-//Zad_3
+    //Zad_3
 //--------------------------------------- With StringBuilder: -------------------------------------------
     public static void isStringPalindrome() {
         StringBuilder stringFromUser =
@@ -58,7 +59,7 @@ public class Lab_4 {
         }
     }
 
-//--------------------------------------- Memory saving way: -------------------------------------------
+    //--------------------------------------- Memory saving way: -------------------------------------------
     public static void isStringPalindrome2() {
         boolean isSameLetter = true;
         String stringFromUser = CommonFunctions.getStringFromUser("Sprawdź czy słowo jest palindromem:");
@@ -75,6 +76,100 @@ public class Lab_4 {
 
 //Zad_4
 
+    public static void sumNumbersFromString() {
+        String stringFromUser = CommonFunctions.getStringFromUser("Podaj tekst do zsumowania w nim liczb: ");
+        int numbersFromString = 0;
 
+        for (int stringIndex = 0; stringIndex < stringFromUser.length(); stringIndex++) {
+            if (CommonFunctions.isCharANumber(stringFromUser.charAt(stringIndex))) {
+                 numbersFromString += Integer.parseInt(String.valueOf(stringFromUser.charAt(stringIndex)));
+            }
+        }
+        System.out.println(numbersFromString);
+    }
 
+//Zad_5
+
+    public static void checkIfBracketsArePaired() {
+        StringBuilder stringFromUser = new StringBuilder("2 * (3.4 - (-7)/2)*(a-2)/(b-1)");
+        int bracketsCounter = 0;
+
+        for (int stringIndex = 0; stringIndex < stringFromUser.length(); stringIndex++) {
+            if (String.valueOf(stringFromUser.charAt(stringIndex)).equals("(")
+                || String.valueOf(stringFromUser.charAt(stringIndex)).equals(")")) {
+                bracketsCounter++;
+            }
+        }
+
+        if (bracketsCounter == 0 || bracketsCounter % 2 != 0) {
+            System.out.println("Błędne sparowanie nawiasów");
+            return;
+        }
+
+        for (int stringIndex = 0; stringIndex < stringFromUser.length(); stringIndex++) {
+            if (String.valueOf(stringFromUser.charAt(stringIndex)).equals(")")) {
+
+                for (int reversedIndex = stringIndex; reversedIndex >= 0; reversedIndex--) {
+                    if (String.valueOf(stringFromUser.charAt(reversedIndex)).equals("(")) {
+                        stringFromUser.replace(stringIndex, stringIndex + 1, "*");
+                        stringFromUser.replace(reversedIndex, reversedIndex + 1, "*");
+                        break;
+                    }
+                }
+            }
+        }
+
+        System.out.println((String.valueOf(stringFromUser).contains("(") || String.valueOf(stringFromUser).contains(")")
+        ? "Błędne sparowanie nawiasów"
+        : "Dobrze sparowane nawiasy"));
+
+        System.out.println(stringFromUser);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -57,6 +57,15 @@ public class CommonFunctions {
         return true;
     }
 
+    public static boolean isCharANumber(char val) {
+        try {
+            Integer.parseInt(String.valueOf(val));
+        } catch (NumberFormatException | NullPointerException e) {
+            return false;
+        }
+        return true;
+    }
+
     public static boolean isNumberFromUserBetweenMinMax(int val, Integer min, Integer max) {
         if (val < min || val > max) {
             return false;
@@ -104,6 +113,8 @@ public class CommonFunctions {
         editedNumber.append(numberToEdit);
         return editedNumber.toString();
     }
+
+
 
 
 
