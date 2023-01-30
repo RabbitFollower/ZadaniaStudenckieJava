@@ -114,6 +114,16 @@ public class CommonFunctions {
         return editedNumber.toString();
     }
 
+//------------------ String.valueOf -------------------------//
+    public static String getValueOf(char val) {
+        return String.valueOf(val);
+    }
+    public static String getValueOf(int val) {
+        return String.valueOf(val);
+    }
+    public static String getValueOf(StringBuilder val) {
+        return String.valueOf(val);
+    }
 
 
 

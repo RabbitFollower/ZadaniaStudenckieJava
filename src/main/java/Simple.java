@@ -11,7 +11,7 @@ public class Simple {
         Lab_3 lab_3 = new Lab_3();
         Lab_4 lab_4 = new Lab_4();
 
-        Lab_4.checkIfBracketsArePaired();
+        Lab_4.getEncryptedString();
 
     }
 }
