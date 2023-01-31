@@ -158,13 +158,6 @@ public class Lab_4 {
         System.out.println("Ciąg wyjściowy: " + stringToEncrypt);
 
     }
-
-
-
-
-
-
-
 }
 
 

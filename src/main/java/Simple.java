@@ -10,8 +10,9 @@ public class Simple {
         Lab_2 lab_2 = new Lab_2();
         Lab_3 lab_3 = new Lab_3();
         Lab_4 lab_4 = new Lab_4();
+        Lab_5 lab_5 = new Lab_5();
 
-        Lab_4.getEncryptedString();
+        System.out.println("Wynik: " + Lab_5.getNthFibonacciValue2(3));
 
     }
 }
