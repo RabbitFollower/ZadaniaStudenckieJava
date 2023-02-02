@@ -213,6 +213,8 @@ public class Lab_5 {
         return Integer.parseInt(string);
     }
 
+//    -------------
+
     private static boolean isNotAllowedChar(char charToTest) {
         return !(charToTest == '+' || charToTest == '-' || charToTest ==  'e');
     }
@@ -278,11 +280,30 @@ public class Lab_5 {
 
 //--------------------------------------------// Zad_7 //-----------------------------------------------------------//
 
+    public static int searchStringAndGetPosition(String searchedString) {
+        String[] stringsArr = {
+                "Ala ma kota",
+                "Ala",
+                "ma",
+                "kot",
+                "Atak",
+                ""
+        };
+
+        StringBuilder strBuilder = new StringBuilder();
+
+        for (String str : stringsArr) {
+            strBuilder.append("Wynik dla: ").append(str).append(" = ");
+            strBuilder.append(searchedString.contains(str) ? searchedString.indexOf(str) : -1).append("\n");
+        }
+        System.out.println(strBuilder);
+        return 0;
+    }
 
 
+//--------------------------------------------// Zad_8 //-----------------------------------------------------------//
 
-
-
+    
 
 
 

@@ -13,6 +13,6 @@ public class Simple {
         Lab_5 lab_5 = new Lab_5();
 
         System.out.println("Wynik: " +
-                Lab_5.stringToInt2());
+                Lab_5.searchStringAndGetPosition("Ala ma kota"));
     }
 }
