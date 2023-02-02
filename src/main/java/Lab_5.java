@@ -1,5 +1,3 @@
-import java.util.Locale;
-
 public class Lab_5 {
 
                                                 //Zad_1
@@ -179,10 +177,106 @@ public class Lab_5 {
 
 
 //--------------------------------------------// Zad_6 //-----------------------------------------------------------//
+//              VOID -> INT
+//    private static boolean isCharAllowed(char character) {
+//        if (character == '-'
+//                || character == '+'
+//                || character == 'e') {
+//            return true;
+//        }
+//        return false;
+//    }
+
+    public static int stringToInt(String string) {
+//        String str = "325";           ok
+//        String str = "+13";           ok
+//        String str = "-14";           ok
+//        String str = "dcsc";          ok
+//        String str = "0003";          ok
+//        String str = "+zonk";         ok
+//        String str = "-934-21";
+//        String str = "-13-kr";
+//        String str = "3e2";                       // 300
+//        String str = "-3e2";                      // -300
+//        String str = "-3e-2";                     // -3
+
+        if (string.isEmpty() || string.matches("^[a-zA-Z+-]+") ) { //pusty albo zawiera litery z '+' i '-'
+            return 0;
+        }
+
+        for (int stringIndex = 0; stringIndex < string.length(); stringIndex++) {
+            if (true) {
+               string = string.substring(0, stringIndex);
+               break;
+            }
+        }
+        return Integer.parseInt(string);
+    }
+
+    private static boolean isNotAllowedChar(char charToTest) {
+        return !(charToTest == '+' || charToTest == '-' || charToTest ==  'e');
+    }
+
+    private static boolean isPlusOrMinusAtFirstPosition(char charToTest, int stringIndex) {
+        return (stringIndex == 0 && ( charToTest == '-' || charToTest == '+'));
+    }
+
+    public static int stringToInt2() {
+
+        String[] arr = {"325"
+                    , "+13"
+                    , "-14"
+                    , "dcsc"
+                    , "0003"
+                    , "+zonk"
+                    , "-934-21"
+                    , "-13-kr"
+                    , "6e2e4"
+                    , "3e2"
+                    , "-3e2"
+                    , "-3e-2"};
+
+        StringBuilder builder = new StringBuilder();
+        for (String string : arr) {
+            builder.append("Test element: " + string);
+
+            if (string.isEmpty() || string.matches("^[a-zA-Z+-]+") ) { //pusty albo zawiera litery z '+' i '-'
+                string = "0";
+            }
+            else {
+                for (int stringIndex = 0; stringIndex < string.length(); stringIndex++) {
+                    char charToTest = string.charAt(stringIndex);
+                    if (!Character.isDigit(charToTest) && !(charToTest == '-' || charToTest == '+' || charToTest == 'e')
+                            || (stringIndex != 0 && (charToTest == '-' || charToTest == '+'))
+                            || charToTest == 'e' && (stringIndex == 0 || stringIndex == string.length() - 1
+                                || stringIndex != string.indexOf(charToTest)
+                                || !Character.isDigit(string.charAt(stringIndex + 1)))
+                    ) {
+                        string = string.substring(0, stringIndex);
+                        break;
+                    }
+                }
+
+                if (string.contains("e")) {
+                    int idxE = string.indexOf("e");
+                    String beforeE = string.substring(0, idxE);
+                    String afterE = string.substring(idxE + 1);
+                    string = String.valueOf(Integer.parseInt(beforeE) * Math.pow(10, (double)Integer.parseInt(afterE)));
+                }
+                else {
+                    string = String.valueOf(Integer.parseInt(string));
+                }
+            }
+            builder.append(" = " + string);
+            builder.append("\n");
+        }
+        System.out.println("Wyniki: \n" + builder.toString());
+        return 0;
+    }
+//U know what to do :)
 
 
-
-
+//--------------------------------------------// Zad_7 //-----------------------------------------------------------//
 
 
 
