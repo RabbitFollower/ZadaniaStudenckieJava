@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Lab_5 {
 
                                                 //Zad_1
@@ -303,7 +306,168 @@ public class Lab_5 {
 
 //--------------------------------------------// Zad_8 //-----------------------------------------------------------//
 
-    
+    public static void wordCount() {
+        String searchedString = "Ala ma kota, kot ma Alę.         xxxx";
+        int wordCounter = 0;
+
+        for (int strIdx = 0; strIdx < searchedString.length(); strIdx++) {
+            char checkedChar = searchedString.charAt(strIdx);
+
+            if (Character.isWhitespace(checkedChar) && (!(Character.isWhitespace(searchedString.charAt(strIdx - 1))))
+                || (!Character.isWhitespace(checkedChar) && strIdx == searchedString.length() - 1)) {
+
+                wordCounter++;
+            }
+        }
+        System.out.println("Liczba słów: " + wordCounter);
+    }
+
+
+//--------------------------------------------// Zad_9 //-----------------------------------------------------------//
+
+    public static void splitStringToArray() {
+        String stringToSplit = "Ala ma kota a kot ma Alę i eloo";
+        String[] arr = new String[5];
+        int arrIdx = 0;
+        StringBuilder arrItem = new StringBuilder();
+
+        for (int stringIdx = 0; stringIdx < stringToSplit.length(); stringIdx++) {
+            char checkedChar = stringToSplit.charAt(stringIdx);
+
+            if (Character.isLetter(checkedChar)) {
+                arrItem.append(checkedChar);
+            }
+            if ((!Character.isLetter(checkedChar) && !arrItem.isEmpty())
+                    || (Character.isLetter(checkedChar) && stringIdx == stringToSplit.length() - 1)) {
+
+                if (arrIdx >= arr.length) {
+                    arr = CommonFunctions.getExtendedArray(arr);
+                }
+
+                arr[arrIdx] = String.valueOf(arrItem);
+                arrItem = new StringBuilder();
+                arrIdx++;
+            }
+        }
+        arr = CommonFunctions.getFittedArray(arr);
+        System.out.println("Tablica:  " + Arrays.toString(arr)
+                + "\n" + "Długość tablicy: " + arr.length);
+    }
+
+//    Funkcja która zrobi mi kopię tablicy (na wymiar), najlepiej jakby pomniejszała jeśli mniej elem niż length
+//    i powiększała gdy jest za dużo. (jak zbyt zawiłe to 2 osobne a później próbuj połączyć)
+
+
+    public static void splitStringToArray2() {
+        String stringToSplit = "Ala ma kota, ,kot ! , 123jest ładny. a.a";
+        ArrayList<String> list = new ArrayList<>();
+        StringBuilder listItem = new StringBuilder();
+
+
+        for (int stringIdx = 0; stringIdx < stringToSplit.length(); stringIdx++) {
+            char checkedChar = stringToSplit.charAt(stringIdx);
+
+            if (Character.isLetter(checkedChar)) {
+                listItem.append(checkedChar);
+            }
+
+            if ((!Character.isLetter(checkedChar) && !listItem.isEmpty())
+                || (Character.isLetter(checkedChar) && stringIdx == stringToSplit.length() - 1)
+            ) {
+                list.add(listItem.toString());
+                System.out.println("list item:  " + listItem);
+                listItem = new StringBuilder();
+            }
+        }
+        System.out.println("------------------------------------------");
+        System.out.println("Lista: " + list);
+    }
+
+
+//--------------------------------------------// Zad_10 //----------------------------------------------------------//
+
+    public static void repetitionCounter() {
+        String checkedString = "mama ma kota";
+        String checkedSequence = "ma";
+        int starCounter = 0;
+
+        if (!checkedString.contains("*")) {
+
+            checkedString = checkedString.replace(checkedSequence, "*");
+
+            for (int strIdx = 0; strIdx < checkedString.length(); strIdx++) {
+
+                if (String.valueOf(checkedString.charAt(strIdx)).contains("*")) {
+                    starCounter++;
+                }
+            }
+            System.out.println("liczba powtórzeń: " + starCounter);
+        } else {
+            System.out.println("Znak '*' jest zakazany, podaj inny ciąg.");
+        }
+    }
+
+
+    public static int repetitionCounter2() {
+        String checkedString = "mama ma kota";
+        String checkedSequence = "ma";
+        int spaceCounterStart = 0;
+        int spaceCounterEnd = 0;
+
+        for (int strIdx = 0;  strIdx < checkedString.length(); strIdx++) {
+             char checkedChar = checkedString.charAt(strIdx);
+
+             if (Character.isWhitespace(checkedChar)) {
+                 spaceCounterStart++;
+             }
+        }
+
+        checkedString = checkedString.replace(checkedSequence, " ");
+
+        for (int strIdx = 0;  strIdx < checkedString.length(); strIdx++) {
+            char checkedChar = checkedString.charAt(strIdx);
+
+            if (Character.isWhitespace(checkedChar)) {
+                 spaceCounterEnd++;
+            }
+        }
+        System.out.println("liczba powtórzeń: " + (spaceCounterEnd - spaceCounterStart));
+        return spaceCounterEnd - spaceCounterStart;
+    }
+
+
+//--------------------------------------------// Zad_11 //----------------------------------------------------------//
+
+    public static void cutString() {
+        StringBuilder stringToCut = new StringBuilder("Ala ma kota");
+        int start = 0;
+        int howMany = 4;
+        int end = start + howMany;
+
+        System.out.println("Wynik: " + '"' + stringToCut.delete(start, end) + '"');
+    }
+
+
+//--------------------------------------------// Zad_12 //----------------------------------------------------------//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -315,3 +479,12 @@ public class Lab_5 {
 
 
 }
+
+
+
+
+
+
+
+
+

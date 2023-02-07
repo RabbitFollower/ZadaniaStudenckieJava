@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -113,6 +114,43 @@ public class CommonFunctions {
         editedNumber.append(numberToEdit);
         return editedNumber.toString();
     }
+
+//------------------ Copy or Fit Array ---------------//
+    public static String[] getFittedArray(String[] arr) {
+        int counter = 0;
+
+        for (int arrIdx = 0; arrIdx < arr.length; arrIdx++) {
+            if (arr[arrIdx] != null) {
+                counter++;
+            }
+        }
+
+        return Arrays.copyOf(arr, counter);
+    }
+
+    public static String[] getExtendedArray(String[] arr) {
+        return Arrays.copyOf(arr, arr.length + 5);
+    }
+
+// ?????
+//public static String[] getExtendedOrFittedArray(String[] arr) {
+//        int counter = 0;
+//
+//        for (int arrIdx = 0; arrIdx < arr.length; arrIdx++) {
+//            if (arr[arrIdx] != null) {
+//                counter++;
+//            }
+//        }
+//
+//        return (counter < arr.length) ?
+//                Arrays.copyOf(arr, counter) : Arrays.copyOf(arr, arr.length + 5);
+//    }
+
+
+
+
+
+
 
 
 
