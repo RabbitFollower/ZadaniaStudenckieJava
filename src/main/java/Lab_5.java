@@ -241,9 +241,11 @@ public class Lab_5 {
                     , "-3e2"
                     , "-3e-2"};
 
+
         StringBuilder builder = new StringBuilder();
         for (String string : arr) {
             builder.append("Test element: " + string);
+            System.out.println(string);
 
             if (string.isEmpty() || string.matches("^[a-zA-Z+-]+") ) { //pusty albo zawiera litery z '+' i '-'
                 string = "0";
@@ -353,10 +355,7 @@ public class Lab_5 {
         System.out.println("Tablica:  " + Arrays.toString(arr)
                 + "\n" + "Długość tablicy: " + arr.length);
     }
-
-//    Funkcja która zrobi mi kopię tablicy (na wymiar), najlepiej jakby pomniejszała jeśli mniej elem niż length
-//    i powiększała gdy jest za dużo. (jak zbyt zawiłe to 2 osobne a później próbuj połączyć)
-
+//----------------------------------------------------------------------------------
 
     public static void splitStringToArray2() {
         String stringToSplit = "Ala ma kota, ,kot ! , 123jest ładny. a.a";
@@ -450,7 +449,96 @@ public class Lab_5 {
 
 //--------------------------------------------// Zad_12 //----------------------------------------------------------//
 
+//*************** funkcje pomocnicze ******************//
+    public static int checkIfStringIsNumber(String checkedElem) {
 
+        if (checkedElem.isEmpty() || checkedElem.matches("^[a-zA-Z+-]+")){
+            return 0;
+        } else {
+            for (int stringIndex = 0; stringIndex < checkedElem.length(); stringIndex++) {
+                char charToTest = checkedElem.charAt(stringIndex);
+
+                if (Character.isWhitespace(charToTest) && (stringIndex == 0 || stringIndex == checkedElem.length() - 1)
+                    || Character.isLetter(charToTest) && charToTest != 'e') {
+                    return 0;
+                }
+
+                if (!Character.isDigit(charToTest) && !(charToTest == '-' || charToTest == '+' || charToTest == 'e')
+                        || (stringIndex != 0 && (charToTest == '-' || charToTest == '+'))
+                        || charToTest == 'e' && (stringIndex == 0 || stringIndex == checkedElem.length() - 1
+                        || stringIndex != checkedElem.indexOf(charToTest)
+                        || !Character.isDigit(checkedElem.charAt(stringIndex + 1)))
+                ) {
+                    return Integer.parseInt(checkedElem.substring(0, stringIndex));
+                }
+            }
+
+            if (checkedElem.contains("e")) {
+                int idxE = checkedElem.indexOf("e");
+                String beforeE = checkedElem.substring(0, idxE);
+                String afterE = checkedElem.substring(idxE + 1);
+                return (int) (Integer.parseInt(beforeE) * Math.pow(10, Integer.parseInt(afterE)));
+            } else {
+                return Integer.parseInt(checkedElem);
+            }
+        }
+    }
+
+    public static int repeatCounter(String checkedElem, String searchedValue) {
+        int counter = 0;
+
+        if (checkedElem.contains(searchedValue)) {
+            checkedElem = checkedElem.replace(searchedValue, "*");
+        }
+
+        for (int elemIdx = 0; elemIdx < checkedElem.length(); elemIdx++) {
+            if (checkedElem.charAt(elemIdx) == '*') {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+//******************** FUNKCJA GŁÓWNA *******************//
+
+    public static void checkArray() {
+        String[] checkedArray = {
+                "mamla",
+                " mama ",
+                "+12",
+                "0001",
+                "991-234-3",
+                "-12e5",
+                "-12e-5",
+                "+zonmakm",
+                "ax2",
+                "amakotma"
+        };
+        StringBuilder stringValue = new StringBuilder();
+        int intValue = 0;
+        String searchedValue = "ma";
+        int counterElem = 0;
+        int counterStr;
+
+        for (int arrIdx = 0; arrIdx < checkedArray.length; arrIdx++) {
+            String checkedElem = checkedArray[arrIdx];
+
+            if (checkIfStringIsNumber(checkedElem) == 0) {
+                stringValue.append(checkedElem);
+            } else {
+                intValue += checkIfStringIsNumber(checkedElem);
+            }
+            counterElem += repeatCounter(checkedElem, searchedValue);
+        }
+        counterStr = repeatCounter(String.valueOf(stringValue), searchedValue);
+
+        System.out.println("Pkt_1 (suma): " + intValue + "\n"
+                         + "Pkt_2 (string): " + stringValue + "\n"
+                         + "Pkt_3 (counter w komórkach): " + counterElem + "\n"
+                         + "Pkt_4 (counter stringa): " + counterStr + "\n"
+                         + "Pkt_5 (counter stringa): " + (float)counterElem/counterStr
+        );
+    }
 
 
 
