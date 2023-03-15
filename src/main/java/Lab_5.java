@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Locale;
 
 public class Lab_5 {
 
@@ -484,6 +485,8 @@ public class Lab_5 {
         }
     }
 
+//********************************************************
+
     public static int repeatCounter(String checkedElem, String searchedValue) {
         int counter = 0;
 
@@ -540,12 +543,64 @@ public class Lab_5 {
         );
     }
 
+//--------------------------------------------// Zad_13 //----------------------------------------------------------//
+
+    public static void rearrange() {
+        String text = "Egzamin";
+        int[] orderArr = {0, 1, 4, 3, 2, 6, 5};
+        String[] newTextArr = new String[text.length()];
+        StringBuilder rearrangedText = new StringBuilder();
+
+        for (int orderArrIdx = 0; orderArrIdx < text.length(); orderArrIdx++) {
+            int textIdx = orderArr[orderArrIdx];
+            newTextArr[orderArrIdx] = String.valueOf(text.charAt(textIdx));
+            rearrangedText.append(newTextArr[orderArrIdx]);
+        }
+        System.out.println("Nowy string: " + rearrangedText);
+    }
 
 
+//--------------------------------------------// Zad_14 //----------------------------------------------------------//
 
+//*************** FUNKCJA POMOCNICZA ***************//
 
+    public static String formatWord(String wordToFormat) {
+        StringBuilder formattedWord = new StringBuilder();
 
+        for (int wordIdx = 0; wordIdx < wordToFormat.length(); wordIdx++) {
+            char charToCheck = wordToFormat.charAt(wordIdx);
 
+            if (Character.isLetter(charToCheck)) {
+                formattedWord.append(charToCheck);
+            }
+        }
+        return String.valueOf(formattedWord).toLowerCase();
+    }
+
+//*************** FUNKCJA GŁÓWNA ***************//
+
+    public static boolean isAnagram3(String word, String wordToTest) {
+// formatowanie danych:
+        String formattedWord = Lab_5.formatWord(word);
+        String formattedWordToTest = Lab_5.formatWord(wordToTest);
+// na podstawie długości:
+        if (formattedWord.length() != formattedWordToTest.length()) {
+            return false;
+        }
+
+        StringBuilder builderToTest = new StringBuilder(formattedWordToTest);
+
+        for (int wordIdx = 0; wordIdx < formattedWord.length(); wordIdx++) {
+            String checkedChar = String.valueOf(formattedWord.charAt(wordIdx));
+// niezgodność liter
+            if (!formattedWordToTest.contains(checkedChar)) {
+                return false;
+            } else {
+                builderToTest.deleteCharAt(builderToTest.indexOf(checkedChar));
+            }
+        }
+        return builderToTest.isEmpty();
+    }
 
 
 
