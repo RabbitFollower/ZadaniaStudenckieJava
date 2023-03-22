@@ -603,24 +603,42 @@ public class Lab_5 {
     }
 
 
+//--------------------------------------------// Zad_15 //----------------------------------------------------------//
 
+    public static int[] hexColor2RGB(String hexColor) {
+        int[] rgbArr = new int[3];
+        char[] valueArr = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+        int value_1 = 0;
+        int value_2 = 0;
 
+        if (hexColor.charAt(0) == '#') {
+            hexColor = hexColor.substring(1);
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        for (int colorIdx = 0; colorIdx < hexColor.length(); colorIdx += 2) {
+            if (!(Arrays.toString(valueArr).contains(String.valueOf(hexColor.charAt(colorIdx))))
+                || hexColor.length() != 6) {
+                System.out.println(
+                    "Złe dane wejściowe."
+                );
+                break;
+            }
+            for (int valueIdx = 0; valueIdx < valueArr.length; valueIdx++) {
+                if (!Arrays.toString(valueArr).contains(String.valueOf(hexColor.charAt(colorIdx)))) {
+                    System.out.println("Złe dane wejściowe. Znak " + "\"" + hexColor.charAt(colorIdx) + "\" nie jest dozwolony.");
+                    break;
+                }
+                if (hexColor.charAt(colorIdx) == valueArr[valueIdx]) {
+                    value_1 = valueIdx;
+                }
+                if (hexColor.charAt(colorIdx + 1) == valueArr[valueIdx]) {
+                    value_2 = valueIdx;
+                }
+            }
+            rgbArr[colorIdx / 2] = 16 * value_1 + value_2;
+        }
+        return rgbArr;
+    }
 }
 
 

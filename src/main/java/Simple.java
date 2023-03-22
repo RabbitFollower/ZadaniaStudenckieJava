@@ -13,6 +13,6 @@ public class Simple {
         Lab_4 lab_4 = new Lab_4();
         Lab_5 lab_5 = new Lab_5();
 
-        System.out.println();
+        System.out.println(Arrays.toString(Lab_5.hexColor2RGB("AB3EA3")));
     }
 }
