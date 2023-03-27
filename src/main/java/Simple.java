@@ -1,6 +1,3 @@
-import java.util.Arrays;
-import java.util.Scanner;
-
 public class Simple {
 
     public static void main (String[] args) throws Exception {
@@ -14,10 +11,11 @@ public class Simple {
         Lab_5 lab_5 = new Lab_5();
         Lab_6 lab_6 = new Lab_6();
 
-        Lab_6.searchWord(
-                "inputFile",
-                "outputFile",
-                "egzamin"
-        );
+//        Lab_6.searchWord(
+//                "inputFile",
+//                "outputFile",
+//                "egzamin"
+//        );
+        Lab_6.sumAndSave("numbersToSum22");
     }
 }

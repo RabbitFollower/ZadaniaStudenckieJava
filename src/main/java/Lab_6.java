@@ -1,6 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -55,12 +53,46 @@ public class Lab_6 {
                 rowCounter++;
             }
             writer.close();
-            System.out.println("Zapisano pomyślnie:  " + outputFile);
+            System.out.println("Saved successfully:   " + outputFile);
 
         } catch (FileNotFoundException exception) {
             System.out.println("File not found");
         }
 
+    }
+
+
+//----------------------------------------------- Zad_3 -----------------------------------------------------------//
+
+
+    public static void sumAndSave(String fileName) {
+        sumAndSave(fileName, false);
+    }
+
+    public static void sumAndSave(String fileName, boolean repeated) {
+        File numbersToSum = new File("src/main/java/" + fileName + ".txt");
+        int sum = 0;
+
+        try {
+            Scanner scanner = new Scanner(numbersToSum);
+
+            while (scanner.hasNextInt()) {
+                sum += scanner.nextInt();
+            }
+
+            FileWriter writer = new FileWriter("src/main/java/" + fileName + ".txt", true);
+            PrintWriter output = new PrintWriter(writer);
+            output.append("\n").append(String.valueOf(sum + 1));
+            System.out.println(sum + 1);
+            output.close();
+
+        } catch (FileNotFoundException exception) {
+            boolean filecreated = CommonFunctions.createNewFile(fileName);
+            if (filecreated) sumAndSave(fileName, true);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

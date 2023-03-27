@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -132,28 +133,9 @@ public class CommonFunctions {
         return Arrays.copyOf(arr, arr.length + 5);
     }
 
+
+
 //--------------------- Words Counter ------------------------------------//
-
-    public static int wordCount2() {
-        String searchedString = "Ala ma jutro egzamin z biologii.\n" +
-                "Jan myje auto.\n" +
-                "Eh, jutro kolejny egzamin.\n" +
-                "Nie lubie polityki.";
-        int wordCounter = 0;
-
-        for (int strIdx = 0; strIdx < searchedString.length(); strIdx++) {
-            char checkedChar = searchedString.charAt(strIdx);
-
-            if (Character.isWhitespace(checkedChar) && (!(Character.isWhitespace(searchedString.charAt(strIdx - 1))))
-                    || (!Character.isWhitespace(checkedChar) && strIdx == searchedString.length() - 1)) {
-
-                wordCounter++;
-            }
-        }
-        System.out.println(wordCounter);
-        return wordCounter;
-    }
-
 
     public static int wordCount(String searchedString) {
         int wordCounter = 0;
@@ -172,7 +154,24 @@ public class CommonFunctions {
 
 
 
+//------------------ New File Creator ------------------------------------//
 
+    public static boolean createNewFile(String fileName) {
+        File file = new File("src/main/java/" + fileName + ".txt");
+
+        try {
+            boolean value = file.createNewFile();
+            if (value) {
+                System.out.println("New file created!");
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (Exception e) {
+            e.getStackTrace();
+            return false;
+        }
+        return true;
+    }
 
 
 
