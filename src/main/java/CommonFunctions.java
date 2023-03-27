@@ -132,19 +132,43 @@ public class CommonFunctions {
         return Arrays.copyOf(arr, arr.length + 5);
     }
 
-// ?????
-//public static String[] getExtendedOrFittedArray(String[] arr) {
-//        int counter = 0;
-//
-//        for (int arrIdx = 0; arrIdx < arr.length; arrIdx++) {
-//            if (arr[arrIdx] != null) {
-//                counter++;
-//            }
-//        }
-//
-//        return (counter < arr.length) ?
-//                Arrays.copyOf(arr, counter) : Arrays.copyOf(arr, arr.length + 5);
-//    }
+//--------------------- Words Counter ------------------------------------//
+
+    public static int wordCount2() {
+        String searchedString = "Ala ma jutro egzamin z biologii.\n" +
+                "Jan myje auto.\n" +
+                "Eh, jutro kolejny egzamin.\n" +
+                "Nie lubie polityki.";
+        int wordCounter = 0;
+
+        for (int strIdx = 0; strIdx < searchedString.length(); strIdx++) {
+            char checkedChar = searchedString.charAt(strIdx);
+
+            if (Character.isWhitespace(checkedChar) && (!(Character.isWhitespace(searchedString.charAt(strIdx - 1))))
+                    || (!Character.isWhitespace(checkedChar) && strIdx == searchedString.length() - 1)) {
+
+                wordCounter++;
+            }
+        }
+        System.out.println(wordCounter);
+        return wordCounter;
+    }
+
+
+    public static int wordCount(String searchedString) {
+        int wordCounter = 0;
+
+        for (int strIdx = 0; strIdx < searchedString.length(); strIdx++) {
+            char checkedChar = searchedString.charAt(strIdx);
+
+            if (Character.isWhitespace(checkedChar) && (!(Character.isWhitespace(searchedString.charAt(strIdx - 1))))
+                    || (!Character.isWhitespace(checkedChar) && strIdx == searchedString.length() - 1)) {
+
+                wordCounter++;
+            }
+        }
+        return wordCounter;
+    }
 
 
 
