@@ -1,14 +1,11 @@
 import org.apache.commons.lang3.StringUtils;
-
 import java.util.*;
 
-import static org.apache.commons.lang3.StringUtils.isAsciiPrintable;
-import static org.apache.commons.lang3.StringUtils.substring;
 
 public class Lab_2 {
     Scanner skaner = new Scanner(System.in);
 
-    //Zad_1 Wyświetlanie liczb nieparzystych od 0 do podaniej liczby
+//----------------------------------------------- Zad_1 -----------------------------------------------------------//
 
     public int displayOddNumbers() {
         int oddNumberMax;
@@ -34,7 +31,7 @@ public class Lab_2 {
     }
 
     public void displayOddNumbers2() throws Exception {
-        int positiveNumber = CommonFunctions.getNumberFromUser("Podaj liczbę  całkowitą dodatnią: "); // 33
+        int positiveNumber = CommonFunctions.getNumberFromUser("Podaj liczbę  całkowitą dodatnią: ");
         int testNumber = 0;
 
         while (testNumber++ < positiveNumber) {
@@ -44,8 +41,8 @@ public class Lab_2 {
         }
     }
 
-//Zad_2 Suma ciągu cyfr:
 
+//----------------------------------------------- Zad_2 -----------------------------------------------------------//
 
     public void sumOfNumbersSequence1() {
         int result1 = 0;
@@ -90,6 +87,7 @@ public class Lab_2 {
     }
 
     public int getMin(int num1, int num2) {
+
         return num1 <= num2 ? num1 : num2;
     }
 
@@ -129,34 +127,8 @@ public class Lab_2 {
         System.out.println("Wynik po wykonaniu petli do-while: " + result);
     }
 
-//Zad_3 Potęgi liczby 2 do zakresu podanego przez użytkownika
+//----------------------------------------------- Zad_3 -----------------------------------------------------------//
 
-// PODPOWIEDZI:
-
-    // 3. za duzo kombinujesz, 1 if wystarczy, jest n == 0, to return 1
-    //          jesli tak to zrobisz, to nie musi byc "ELSE", bo return wychodzi z funkcji
-    // 4. uzyj petli for, bedzie latwiej, i=0; i<N; i++, a za kazdym razem mnozysz *= a
-    //          w tym wypadku nie uzywasz i, posluzy tylko do iteracji
-
-
-//    public void testGetSquare() {
-//        System.out.println("Wynik potegowania 2^1 = " + Math.pow(2, 1)
-//                + " moja func = " + getSquare(2, 1));
-//
-//        System.out.println("Wynik potegowania 2^2 = " + Math.pow(2, 2)
-//                + " moja func = " + getSquare(2, 2));
-//
-//        System.out.println("Wynik potegowania 2^3 = " + Math.pow(2, 3)
-//                + " moja func = " + getSquare(2, 3));
-//
-//        System.out.println("Wynik potegowania 2^4 = " + Math.pow(2, 4)
-//                + " moja func = " + getSquare(2, 4));
-//
-//
-//        System.out.println("Wynik potegowania 2^5 = " + Math.pow(2, 5)
-//                + " moja func = " + getSquare(2, 5));
-//
-//    }
 
     private int getPower(int a, int n) {
         int result = 1;
@@ -176,7 +148,6 @@ public class Lab_2 {
         int a = 2;
         int i = 0;
 
-//        while (!(getPower(a, i) > userInput)) {
         while (getPower(a, i) < userInput) {
             System.out.println(getPower(a, i));
             i++;
@@ -184,7 +155,8 @@ public class Lab_2 {
     }
 
 
-    //Zad_4
+//----------------------------------------------- Zad_4 -----------------------------------------------------------//
+
 
     public void displaySumOfNumbers() {
         int result = 0;
@@ -214,7 +186,8 @@ public class Lab_2 {
     }
 
 
-    //Zad_5
+//----------------------------------------------- Zad_5 -----------------------------------------------------------//
+
 
     public void readStringAndSumMinMax() {
         String numbers = "2,94,7,52,0,2,42"; //getStringFromUser("Wpisz ciąg liczb całkowitych oddzielonych przecinkiem: ");
@@ -223,17 +196,17 @@ public class Lab_2 {
         System.out.println(substr);
         int numberOfComas = StringUtils.countMatches(substr, ",");
 
-        int numbersArr[] = new int[numberOfComas];
+        int[] numbersArr = new int[numberOfComas];
 
         for (int i = 0; i < numbersArr.length; i++) {
             numbersArr[i] = Integer.parseInt(substr.substring(0, substr.indexOf(",")));
             substr = substr.substring(substr.indexOf(",") + 1);
-            if (substr == "") {
+            if (substr.equals("")) {
                 break;
             }
         }
 
-        numbersArr = sortNumbers(numbersArr);
+        sortNumbers(numbersArr);
 
         double sumMinMax = numbersArr[0] + numbersArr[(numbersArr.length - 1)];
         System.out.println(sumMinMax);
@@ -254,14 +227,14 @@ public class Lab_2 {
         if (numbers.matches("(.+)?[0-9]+-(.+)?")) {
             return false;
         }
-        // chcę sprawdzić czy przecinek jest pierwszy
+
         if (numbers.charAt(0) == ',') {
             return false;
         }
         return true;
     }
 
-    //sprawdź każdy przypadek pojedynczo i wyklucz
+
     public void testIsStringCorrect() {
         HashMap<String, Boolean> testNumbers = new HashMap<>();
         testNumbers.put("2,7,52,2,42,6", false);
@@ -280,8 +253,8 @@ public class Lab_2 {
         testNumbers.put("2,94,-7,52,0,-2,42", true);
         testNumbers.put("", false);
         testNumbers.put(",", false);
-        testNumbers.put("0,2,94,-7,52,0,-2,42", false); //do zastanowienia???
-        testNumbers.put(",0,2,94,-7,52,0,-2,42", false); //do zastanowienia???
+        testNumbers.put("0,2,94,-7,52,0,-2,42", false);
+        testNumbers.put(",0,2,94,-7,52,0,-2,42", false);
 
         for (Map.Entry element : testNumbers.entrySet()) {
             if (!(isStringCorrect((String) element.getKey()) == (Boolean) element.getValue())) {
@@ -309,7 +282,8 @@ public class Lab_2 {
         return numbersArr;
     }
 
-//Zad_6 Gra w "więcej - mniej":
+//----------------------------------------------- Zad_6 -----------------------------------------------------------//
+
 
     public void lessMoreGame() throws Exception {
         int randomNumber = CommonFunctions.getRandomNumber(0, 100);
@@ -327,7 +301,8 @@ public class Lab_2 {
     }
 
 
-// Zad_7 Narysuj Prostokąt w konsoli:
+//----------------------------------------------- Zad_7 -----------------------------------------------------------//
+
 
     private void drawRectangle(char fillingChar, int posX, int posY, int lengthX, int lengthY) {
         for (int x = 1; x < posX + lengthX; x++) {
@@ -363,8 +338,7 @@ public class Lab_2 {
             System.out.println("Złe dane wejściowe, Y musi byc > 1");
         }
 
-        // TODO: ZMIEN JAK POWYZEJ
-        // 3. dlugosci
+        // 3. Lengths
         int lengthX;
         while ((lengthX = CommonFunctions.getNumberFromUser("Podaj dlugość X: ")) < 1) {
             System.out.println("Złe dane wejściowe, lengthX musi byc > 1");
@@ -379,7 +353,8 @@ public class Lab_2 {
     }
 
 
-//Zad_8 Choinka
+//----------------------------------------------- Zad_8 -----------------------------------------------------------//
+
 
     public void drawChristmasTree() throws Exception {
         int height = CommonFunctions.getNumberFromUser("Podaj liczbę pięter choinki :)");
@@ -395,7 +370,8 @@ public class Lab_2 {
     }
 
 
-// Zad_9 ?????! Wrócić i ogarnąc dla liczb ujemnych !????
+//----------------------------------------------- Zad_9 -----------------------------------------------------------//
+
 
     public void countSumAndRatio() throws Exception {
         String usersNumber = String.valueOf(CommonFunctions.getNumberFromUser("Podaj długą liczbę całkowitą:"));
@@ -431,7 +407,8 @@ public class Lab_2 {
 
     }
 
-//Zad_10
+//----------------------------------------------- Zad_10 -----------------------------------------------------------//
+
 
     public void getNumbersDivisors() throws Exception {
         int usersNumber = CommonFunctions.getNumberFromUser("Podaj liczbę aby wyświetlić jej dzielniki: ");
@@ -450,7 +427,7 @@ public class Lab_2 {
         }
     }
 
-//Zad_11 Sprawdzanie czy liczba jest pierwszą
+//----------------------------------------------- Zad_11 -----------------------------------------------------------//
 
     public void isPrimeNumberFor() throws Exception {
         int number = CommonFunctions.getNumberFromUser("Podaj liczbę aby sprawdzić czy jest pierwszą: ",2,null);
@@ -467,22 +444,4 @@ public class Lab_2 {
             System.out.println(number + " is not a prime number.");
         }
     }
-
-//    public void isPrimeNumberWhile() {
-//        int number = 7, i = 2;
-//        boolean flag = false;
-//        while (i <= number / 2) {
-//            if (number % i == 0) {
-//                flag = true;
-//                break;
-//            }
-//            i++;
-//        }
-//        if (!flag) {
-//            System.out.println(number + " is a prime number.");
-//        } else {
-//            System.out.println(number + " is not a prime number.");
-//        }
-//    }
-
-}//klamra klasy
+}

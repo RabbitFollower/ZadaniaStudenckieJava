@@ -1,7 +1,8 @@
 
 public class Lab_4 {
 
-    //Zad_1
+//----------------------------------------------- Zad_1 -----------------------------------------------------------//
+
     public static void countLastCharFromString() {
 
         String stringFromUser =
@@ -17,7 +18,10 @@ public class Lab_4 {
         System.out.println("Liczba powtórzeń litery/znaku " + "\"" + lastChar + "\" to: " + lastCharCounter);
     }
 
-//Zad_2 ------------------------------ With StringBuilder: --------------------------------------------
+
+//----------------------------------------------- Zad_2 -----------------------------------------------------------//
+
+//------------- With StringBuilder: ----------------//
 
     public static void getReversedString() {
         StringBuilder stringFromUser =
@@ -26,7 +30,7 @@ public class Lab_4 {
         System.out.println("Odwrócony string: " + stringFromUser.reverse());
     }
 
-//Zad_2 ------------------------------ With ForLoop + StringBuilder: --------------------------------------------
+//--------- With ForLoop + StringBuilder: -----------//
 
     public static void getReversedString2() {
         StringBuilder reversedString = new StringBuilder();
@@ -40,8 +44,9 @@ public class Lab_4 {
     }
 
 
-    //Zad_3
-//--------------------------------------- With StringBuilder: -------------------------------------------
+//----------------------------------------------- Zad_3 -----------------------------------------------------------//
+
+//--------------- With StringBuilder: -----------------//
     public static void isStringPalindrome() {
         StringBuilder stringFromUser =
                 new StringBuilder(CommonFunctions.getStringFromUser("Sprawdź czy słowo jest palindromem:"));
@@ -59,7 +64,7 @@ public class Lab_4 {
         }
     }
 
-    //--------------------------------------- Memory saving way: -------------------------------------------
+//--------------- Memory saving way: -----------------//
     public static void isStringPalindrome2() {
         boolean isSameLetter = true;
         String stringFromUser = CommonFunctions.getStringFromUser("Sprawdź czy słowo jest palindromem:");
@@ -74,7 +79,8 @@ public class Lab_4 {
         System.out.println("Słowo: " + stringFromUser + (isSameLetter ? " jest" : " nie jest") + " palindromem");
     }
 
-//Zad_4
+
+//----------------------------------------------- Zad_4 -----------------------------------------------------------//
 
     public static void sumNumbersFromString() {
         String stringFromUser = CommonFunctions.getStringFromUser("Podaj tekst do zsumowania w nim liczb: ");
@@ -88,7 +94,8 @@ public class Lab_4 {
         System.out.println(numbersFromString);
     }
 
-//Zad_5
+//----------------------------------------------- Zad_5 -----------------------------------------------------------//
+
 
     public static void checkIfBracketsArePaired() {
         StringBuilder stringFromUser = new StringBuilder("2 * (3.4 - (-7)/2)*(a-2)/(b-1)");
@@ -126,8 +133,7 @@ public class Lab_4 {
         System.out.println(stringFromUser);
     }
 
-//Zad_6
-
+//----------------------------------------------- Zad_6 -----------------------------------------------------------//
 
     public static void getEncryptedString() {
         int shiftValue = -3;
@@ -140,7 +146,6 @@ public class Lab_4 {
 
         System.out.println("Ciąg wyjściowy: " + stringToEncrypt);
     }
-
 }
 
 

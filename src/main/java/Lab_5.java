@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Locale;
 
 public class Lab_5 {
 
-                                                //Zad_1
-//------------------------------------------ Iterating way: -------------------------------------------//
+//----------------------------------------------- Zad_1 -----------------------------------------------------------//
+
+//------------------- Iterating way: ------------------//
 
     public static void getFactorial() throws Exception {
         int number = CommonFunctions.getNumberFromUserWithMin("Podaj liczbę aby obliczyć jej silnię: ", 1);
@@ -24,7 +24,7 @@ public class Lab_5 {
     }
 
 
-//----------------------------------------- With Recursion: ------------------------------------------//
+//----------------- With Recursion: ------------------//
 
     public static int getFactorial2(int number) {
         number *= (number > 1) ? getFactorial2(number - 1) : number;
@@ -32,8 +32,9 @@ public class Lab_5 {
     }
 
 
-                                           //Zad_2
-//----------------------------- Iterating way + memory saving: ---------------------------------------//
+//----------------------------------------------- Zad_2 -----------------------------------------------------------//
+
+//------------- Iterating way + memory saving: ------------------//
 
 
     public static void getNthFibonacciValue(int nthPlace) {
@@ -56,7 +57,7 @@ public class Lab_5 {
         }
     }
 
-//----------------------------------- Iterating way  ----------------------------------------------//
+//--------------- Iterating way: ---------------//
 
     public static void getNthFibonacciValue3(int nthPlace) {
         int[] result = new int[nthPlace + 1];
@@ -76,7 +77,7 @@ public class Lab_5 {
     }
 
 
-//----------------------------------------- With Recursion: ----------------------------------------//
+//----------------- With Recursion: -------------------//
     public static int getNthFibonacciValue2(int nthPlace) {
         if (nthPlace == 0) {
             nthPlace = 1;
@@ -89,14 +90,15 @@ public class Lab_5 {
     }
 
 
-                                                //Zad_3
-//------------------------------------------------------------------------------------------------------------//
+//----------------------------------------------- Zad_3 -----------------------------------------------------------//
+
 
     public static int getPosition(String text, char character) {
+
         return text.indexOf(character);
     }
 
-    //-----------With ForLoop----------------//
+ //-----------With ForLoop----------------//
 
     public static int getPosition2(String text, char character) {
         for (int textIndex = 0; textIndex < text.length(); textIndex++) {
@@ -108,11 +110,8 @@ public class Lab_5 {
         System.out.println("-1");
         return -1;
     }
-//wroc i zrob dla wszystkich powtorzen
 
-
-                                            //Zad_4
-//------------------------------------------------------------------------------------------------------------//
+//----------------------------------------------- Zad_4 -----------------------------------------------------------//
 
     public static String flipCase(String text) {
         String flippedText = "";
@@ -163,8 +162,7 @@ public class Lab_5 {
     }
 
 
-                                                //Zad_5
-//------------------------------------------------------------------------------------------------------------------//
+//----------------------------------------------- Zad_5 -----------------------------------------------------------//
 
     public static boolean startsWith(String str1, String str2) {
         return str1.startsWith(str2);
@@ -180,54 +178,9 @@ public class Lab_5 {
     }
 
 
-//--------------------------------------------// Zad_6 //-----------------------------------------------------------//
-//              VOID -> INT
-//    private static boolean isCharAllowed(char character) {
-//        if (character == '-'
-//                || character == '+'
-//                || character == 'e') {
-//            return true;
-//        }
-//        return false;
-//    }
+//-------------------------------------------- Zad_6 -----------------------------------------------------------//
 
-    public static int stringToInt(String string) {
-//        String str = "325";           ok
-//        String str = "+13";           ok
-//        String str = "-14";           ok
-//        String str = "dcsc";          ok
-//        String str = "0003";          ok
-//        String str = "+zonk";         ok
-//        String str = "-934-21";
-//        String str = "-13-kr";
-//        String str = "3e2";                       // 300
-//        String str = "-3e2";                      // -300
-//        String str = "-3e-2";                     // -3
-
-        if (string.isEmpty() || string.matches("^[a-zA-Z+-]+") ) { //pusty albo zawiera litery z '+' i '-'
-            return 0;
-        }
-
-        for (int stringIndex = 0; stringIndex < string.length(); stringIndex++) {
-            if (true) {
-               string = string.substring(0, stringIndex);
-               break;
-            }
-        }
-        return Integer.parseInt(string);
-    }
-
-//    -------------
-
-    private static boolean isNotAllowedChar(char charToTest) {
-        return !(charToTest == '+' || charToTest == '-' || charToTest ==  'e');
-    }
-
-    private static boolean isPlusOrMinusAtFirstPosition(char charToTest, int stringIndex) {
-        return (stringIndex == 0 && ( charToTest == '-' || charToTest == '+'));
-    }
-
-    public static int stringToInt2() {
+    public static int stringToInt() {
 
         String[] arr = {"325"
                     , "+13"
@@ -281,10 +234,8 @@ public class Lab_5 {
         System.out.println("Wyniki: \n" + builder.toString());
         return 0;
     }
-//U know what to do :)
 
-
-//--------------------------------------------// Zad_7 //-----------------------------------------------------------//
+//-------------------------------------------- Zad_7 -----------------------------------------------------------//
 
     public static int searchStringAndGetPosition(String searchedString) {
         String[] stringsArr = {
@@ -307,7 +258,7 @@ public class Lab_5 {
     }
 
 
-//--------------------------------------------// Zad_8 //-----------------------------------------------------------//
+//-------------------------------------------- Zad_8 -----------------------------------------------------------//
 
     public static void wordCount() {
         String searchedString = "Ala ma kota, kot ma Alę.         xxxx";
@@ -326,10 +277,10 @@ public class Lab_5 {
     }
 
 
-//--------------------------------------------// Zad_9 //-----------------------------------------------------------//
+//-------------------------------------------- Zad_9 -----------------------------------------------------------//
 
     public static void splitStringToArray() {
-        String stringToSplit = "Ala ma kota a kot ma Alę i eloo";
+        String stringToSplit = "Ala ma kota a kot ma Alę";
         String[] arr = new String[5];
         int arrIdx = 0;
         StringBuilder arrItem = new StringBuilder();
@@ -384,7 +335,7 @@ public class Lab_5 {
     }
 
 
-//--------------------------------------------// Zad_10 //----------------------------------------------------------//
+//-------------------------------------------- Zad_10 ------------------------------------------------------//
 
     public static void repetitionCounter() {
         String checkedString = "mama ma kota";
@@ -436,7 +387,7 @@ public class Lab_5 {
     }
 
 
-//--------------------------------------------// Zad_11 //----------------------------------------------------------//
+//-------------------------------------------- Zad_11 ----------------------------------------------------------//
 
     public static void cutString() {
         StringBuilder stringToCut = new StringBuilder("Ala ma kota");
@@ -448,9 +399,9 @@ public class Lab_5 {
     }
 
 
-//--------------------------------------------// Zad_12 //----------------------------------------------------------//
+//-------------------------------------------- Zad_12 ----------------------------------------------------------//
 
-//*************** funkcje pomocnicze ******************//
+//*************** funkcje pomocnicze:
     public static int checkIfStringIsNumber(String checkedElem) {
 
         if (checkedElem.isEmpty() || checkedElem.matches("^[a-zA-Z+-]+")){
@@ -485,7 +436,7 @@ public class Lab_5 {
         }
     }
 
-//********************************************************
+//********************************
 
     public static int repeatCounter(String checkedElem, String searchedValue) {
         int counter = 0;
@@ -543,7 +494,7 @@ public class Lab_5 {
         );
     }
 
-//--------------------------------------------// Zad_13 //----------------------------------------------------------//
+//-------------------------------------------- Zad_13 ----------------------------------------------------------//
 
     public static void rearrange() {
         String text = "Egzamin";
@@ -560,7 +511,7 @@ public class Lab_5 {
     }
 
 
-//--------------------------------------------// Zad_14 //----------------------------------------------------------//
+//-------------------------------------------- Zad_14 ----------------------------------------------------------//
 
 //*************** FUNKCJA POMOCNICZA ***************//
 
@@ -603,7 +554,7 @@ public class Lab_5 {
     }
 
 
-//--------------------------------------------// Zad_15 //----------------------------------------------------------//
+//-------------------------------------------- Zad_15 ----------------------------------------------------------//
 
     public static int[] hexColor2RGB(String hexColor) {
         int[] rgbArr = new int[3];

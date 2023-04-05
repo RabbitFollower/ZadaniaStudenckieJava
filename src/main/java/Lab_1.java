@@ -3,21 +3,18 @@ import java.util.Scanner;
 
 public class Lab_1 {
     Scanner skaner = new Scanner(System.in);
-    private int currentIndex;
 
-    public void ArrayMenager() {
-        this.currentIndex = 0;
-    }
+//----------------------------------------------- Zad_1 -----------------------------------------------------------//
 
 
-    // Zadanie 1 - nazwa ma mówic co funkcja robi, to na dole to tylko przyklad
     public double celsjuszeNaFarenheity(double stopnie) {
         return stopnie * 1.8 + 32;
     }
 
 
 
-    //Zad 2 itd.
+//----------------------------------------------- Zad_2 -----------------------------------------------------------//
+
     public void trzyLiczby() {
         int[] mojeLiczby = new int[3];
 
@@ -48,8 +45,9 @@ public class Lab_1 {
         return arrayToSort;
     }
 
-    //Zad_3 Obliczanie BMI
-//do przerobienia (zmienne min/max), if do przerobienia(sprawdzanie czy jest nadwaga/niedowaga w przeciwnym wypadku waga normalna
+//----------------------------------------------- Zad_3 -----------------------------------------------------------//
+
+
     public double calculateBMI(double weight, double growth) {
         double yourBMI = (weight / (growth * growth)) * 10000;
 
@@ -63,28 +61,16 @@ public class Lab_1 {
         return yourBMI;
     }
 
-    //Zad_4 Obliczanie podatku + skrócona notacja
-//zmienne zamiast konkretnych liczb
-    public double calculateTax (double income) {
-//        double yourTax;
-        //double yourTax =
-        return income <= 85528.00 ? (income * 18 / 100) - 556.02 : 14839.02 + ((income - 85528.00) * 0.32);
+//----------------------------------------------- Zad_3 -----------------------------------------------------------//
 
-//        if (income <= 85528.00) {
-//            yourTax = (income * 18 / 100) - 556.02;
-//        } else {
-//            yourTax = 14839.02 + ((income - 85528.00) * 0.32);
-//        }
-        //System.out.println("Twój podatek: " + yourTax + " PLN");
-        //return yourTax;
+
+    public double calculateTax (double income) {
+        return income <= 85528.00 ? (income * 18 / 100) - 556.02 : 14839.02 + ((income - 85528.00) * 0.32);
     }
 
 
+//----------------------------------------------- Zad_5 -----------------------------------------------------------//
 
-
-
-    //Zad_5 Miesięczna rata za sprzęt
-//
     public double monthlyInstallment (double price, int numberOfInstallments) {
         double yourInstalment = 0;
 
@@ -133,7 +119,8 @@ public class Lab_1 {
     }
 
 
-    //Zad_6 KALKULATOR
+//----------------------------------------------- Zad_6 -----------------------------------------------------------//
+
 
     public void calculate() {
         double result = 0;
@@ -164,12 +151,8 @@ public class Lab_1 {
         }
         System.out.println("Wynik: " + result);
     }
-
-
 }
 
-//funkcja zaokrąglająca???
-//z=new BigDecimal(z).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); przestarzałe, poszukaj nowego
 
 
 

@@ -78,7 +78,6 @@ public class CommonFunctions {
         return random.nextInt(min, max);
     }
 
-//Zad_9_________________________________________________________________________________________________
     public static boolean isNumberEven(int val) {
         if (val % 2 != 0) {
             return false;
@@ -95,6 +94,7 @@ public class CommonFunctions {
     }
 
     public static int charToInt(char val) {
+
         return Integer.parseInt(String.valueOf(val));
     }
 
