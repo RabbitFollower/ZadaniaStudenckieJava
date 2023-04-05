@@ -1,4 +1,6 @@
-import java.io.File;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -28,10 +30,6 @@ public class CommonFunctions {
     public static int getNumberFromUser(String msg, Integer min, Integer max) throws Exception {
         System.out.println(msg);
         String numberFromUser;
-
-//        if (min == null) {
-//            min = Integer.MIN_VALUE;
-//        }
 
         if (min != null && max != null && min > max) {
             System.out.println("");
@@ -116,6 +114,7 @@ public class CommonFunctions {
         return editedNumber.toString();
     }
 
+
 //------------------ Copy or Fit Array ---------------//
     public static String[] getFittedArray(String[] arr) {
         int counter = 0;
@@ -173,18 +172,59 @@ public class CommonFunctions {
         return true;
     }
 
+//---------------------- Caesar Cipher ------------------------------//
+
+    public static String caesarCipher(String text, int shiftValue) {
+        final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+        StringBuilder textToEncrypt = new StringBuilder(text);
 
 
+        for (int stringToEncryptIndex = 0; stringToEncryptIndex < textToEncrypt.length(); stringToEncryptIndex++) {
+            char checkedChar = textToEncrypt.charAt(stringToEncryptIndex);
+            if (!Character.isLetter(checkedChar)) {
+                continue;
+            }
 
+            int alphaCharIndex = ALPHABET.indexOf(textToEncrypt.charAt(stringToEncryptIndex));
+            int encodedCharIndex = alphaCharIndex + shiftValue;
 
+            if (encodedCharIndex > ALPHABET.length() - 1) {
+                encodedCharIndex %= ALPHABET.length();
+            }
+            while (encodedCharIndex < 0) {
+                encodedCharIndex += ALPHABET.length();
+            }
 
+            textToEncrypt.replace(stringToEncryptIndex,
+                    stringToEncryptIndex + 1,
+                    String.valueOf(ALPHABET.charAt(encodedCharIndex)));
+        }
+        return String.valueOf(textToEncrypt);
+    }
 
+//-------------------------- Save To Another File ----------------------------//
 
+    public static void saveToAnotherFile(String fileName, String text, boolean append) {
+        File file = new File("src/main/java/" + fileName + ".txt");
 
+        if (!Files.exists(Path.of(String.valueOf(file)))) {
+            CommonFunctions.createNewFile(fileName);
+        }
 
+        try {
+            FileWriter writer = new FileWriter("src/main/java/" + fileName + ".txt", append);
+            PrintWriter outputFile = new PrintWriter(writer);
+            outputFile.append(text).append("\n");
+            outputFile.close();
 
-
-}// klamra klasy
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found. :(");
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
 
 
 

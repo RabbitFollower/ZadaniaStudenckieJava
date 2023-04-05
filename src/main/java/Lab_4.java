@@ -128,36 +128,19 @@ public class Lab_4 {
 
 //Zad_6
 
+
     public static void getEncryptedString() {
-        final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
-        int shiftValue = 10;
+        int shiftValue = -3;
         StringBuilder stringToEncrypt =
                 new StringBuilder(CommonFunctions.getStringFromUser("Podaj string do zaszyfrowania: "));
-
         System.out.println("Ciąg wejściowy: " + stringToEncrypt + "      Wartość przesunięcia: " + shiftValue);
         System.out.println("------------------------------------------------------------------------");
 
-        for (int stringToEncryptIndex = 0; stringToEncryptIndex < stringToEncrypt.length(); stringToEncryptIndex++) {
-            int alphaCharIndex = ALPHABET.indexOf(stringToEncrypt.charAt(stringToEncryptIndex));
-            int encodedCharIndex = alphaCharIndex + shiftValue;
+        stringToEncrypt = new StringBuilder(CommonFunctions.caesarCipher(String.valueOf(stringToEncrypt), shiftValue));
 
-            if (encodedCharIndex > ALPHABET.length() - 1) {
-                encodedCharIndex %= ALPHABET.length();
-            }
-            while (encodedCharIndex < 0) {
-                encodedCharIndex += ALPHABET.length();
-            }
-            System.out.println("Litera do zakodowania: " + stringToEncrypt.charAt(stringToEncryptIndex));
-            System.out.println("Zakodowana litera: " + (ALPHABET.charAt(encodedCharIndex)));
-            System.out.println("------------------------------------------------------------------------");
-
-            stringToEncrypt.replace(stringToEncryptIndex,
-                                    stringToEncryptIndex + 1,
-                                    String.valueOf(ALPHABET.charAt(encodedCharIndex)));
-        }
         System.out.println("Ciąg wyjściowy: " + stringToEncrypt);
-
     }
+
 }
 
 
